@@ -1,0 +1,12 @@
+{
+  "name": "googleforms",
+  "version": "1.0.0",
+  "description": "test task for TenThousand",
+  "workspaces": ["apps/*", "packages/*"],
+   "scripts": {
+    "dev": "concurrently \"npm run dev --workspace=apps/server\" \"npm run dev --workspace=apps/client\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
