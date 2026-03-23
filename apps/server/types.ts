@@ -11,10 +11,14 @@ export interface ResponsesArgs {
 export interface CreateFormArgs {
   title: string;
   description?: string;
+  imageUrl?: string;
   questions?: {
     title: string;
-    type: string;
+    description?: string;
+    type: Form["questions"][number]["type"];
     options?: string[];
+    imageUrl?: string;
+    required?: boolean;
   }[];
 }
 

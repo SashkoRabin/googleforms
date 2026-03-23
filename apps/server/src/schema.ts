@@ -1,18 +1,29 @@
 import { gql } from "apollo-server";
 
 export const typeDefs = gql`
+  enum QuestionType {
+    TEXT
+    MULTIPLE_CHOICE
+    CHECKBOX
+    DATE
+  }
+
   type Form {
     id: ID!
     title: String!
     description: String
+    imageUrl: String
     questions: [Question!]!
   }
 
   type Question {
     id: ID!
     title: String!
-    type: String!
+    description: String
+    type: QuestionType!
     options: [String]
+    imageUrl: String
+    required: Boolean!
   }
 
   type Response {
@@ -35,8 +46,11 @@ export const typeDefs = gql`
 
   input QuestionInput {
     title: String!
-    type: String!
+    description: String
+    type: QuestionType!
     options: [String]
+    imageUrl: String
+    required: Boolean
   }
 
   input AnswerInput {
@@ -49,6 +63,7 @@ export const typeDefs = gql`
     createForm(
       title: String!
       description: String
+      imageUrl: String
       questions: [QuestionInput]
     ): Form!
 

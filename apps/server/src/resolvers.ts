@@ -24,20 +24,24 @@ export const resolvers = {
   Mutation: {
     createForm: (
       _parent: unknown,
-      { title, description, questions }: CreateFormArgs
+      { title, description, imageUrl, questions }: CreateFormArgs
     ): Form => {
       const mappedQuestions: Question[] =
         questions?.map((q) => ({
           id: uuid(),
           title: q.title,
-          type: q.type as Question["type"], // strictly typed
+          description: q.description,
+          type: q.type,
           options: q.options,
+          imageUrl: q.imageUrl,
+          required: q.required ?? false,
         })) ?? [];
 
       const form: Form = {
         id: uuid(),
         title,
         description,
+        imageUrl,
         questions: mappedQuestions,
       };
 

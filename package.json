@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "description": "test task for TenThousand",
   "workspaces": ["apps/*", "packages/*"],
-   "scripts": {
-    "dev": "concurrently \"npm run dev --workspace=apps/server\" \"npm run dev --workspace=apps/client\""
+  "scripts": {
+    "dev": "concurrently \"npm run dev --workspace=apps/server\" \"npm run dev --workspace=apps/client\"",
+    "build": "npm run build --workspace=apps/server && npm run build --workspace=apps/client",
+    "lint": "npm run lint --workspace=apps/client"
   },
   "devDependencies": {
     "concurrently": "^8.2.2"

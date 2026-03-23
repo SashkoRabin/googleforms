@@ -8,14 +8,18 @@ export enum QuestionType {
 export interface Question {
   id: string;
   title: string;
+  description?: string;
   type: QuestionType;
   options?: string[];
+  imageUrl?: string;
+  required?: boolean;
 }
 
 export interface Form {
   id: string;
   title: string;
   description?: string;
+  imageUrl?: string;
   questions: Question[];
 }
 
